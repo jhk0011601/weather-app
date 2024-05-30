@@ -1,0 +1,95 @@
+<div class="container mt-5">
+  <div *ngIf="showAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+    Report updated successfully
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="hideAlert()"></button>
+  </div>
+
+  <h2>Edit Report</h2>
+  <form [formGroup]="reportForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="formatted_date" class="form-label">Formatted Date</label>
+          <input type="date" id="formatted_date" class="form-control" formControlName="formatted_date">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="summary" class="form-label">Summary</label>
+          <input type="text" id="summary" class="form-control" formControlName="summary">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="precip_type" class="form-label">Precip Type</label>
+          <input type="text" id="precip_type" class="form-control" formControlName="precip_type">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="temperature" class="form-label">Temperature (°C)</label>
+          <input type="number" id="temperature" class="form-control" formControlName="temperature">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="apparent_temperature" class="form-label">Apparent Temperature (°C)</label>
+          <input type="number" id="apparent_temperature" class="form-control" formControlName="apparent_temperature">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="humidity" class="form-label">Humidity</label>
+          <input type="number" step="0.01" id="humidity" class="form-control" formControlName="humidity">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="wind_speed" class="form-label">Wind Speed (km/h)</label>
+          <input type="number" id="wind_speed" class="form-control" formControlName="wind_speed">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="wind_bear" class="form-label">Wind Bearing (degrees)</label>
+          <input type="number" id="wind_bear" class="form-control" formControlName="wind_bear">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="visibility" class="form-label">Visibility (km)</label>
+          <input type="number" id="visibility" class="form-control" formControlName="visibility">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="cloud_cover" class="form-label">Cloud Cover</label>
+          <input type="number" step="0.01" id="cloud_cover" class="form-control" formControlName="cloud_cover">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="pressure" class="form-label">Pressure (millibars)</label>
+          <input type="number" id="pressure" class="form-control" formControlName="pressure">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="daily_summary" class="form-label">Daily Summary</label>
+          <textarea id="daily_summary" class="form-control" formControlName="daily_summary"></textarea>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+  </form>
+</div>

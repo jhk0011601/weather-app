@@ -1,0 +1,57 @@
+<div>
+  <h1>Weather Reports</h1>
+
+  <div *ngIf="showSuccessAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+    Report deleted successfully
+    <button type="button" class="btn-close" (click)="dismissAlert()" aria-label="Close"></button>
+  </div>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Formatted Date</th>
+        <th>Summary</th>
+        <th>Precip Type</th>
+        <th>Temperature (°C)</th>
+        <th>Apparent Temperature (°C)</th>
+        <th>Humidity</th>
+        <th>Wind Speed (km/h)</th>
+        <th>Wind Bearing (degrees)</th>
+        <th>Visibility (km)</th>
+        <th>Cloud Cover</th>
+        <th>Pressure (millibars)</th>
+        <th>Daily Summary</th>
+        <th colspan="2">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of reports">
+        <td>{{ formatDate(report.formatted_date) }}</td>
+        <td>{{ report.summary }}</td>
+        <td>{{ report.precip_type }}</td>
+        <td>{{ report.temperature }}</td>
+        <td>{{ report.apparent_temperature }}</td>
+        <td>{{ report.humidity }}</td>
+        <td>{{ report.wind_speed }}</td>
+        <td>{{ report.wind_bear }}</td>
+        <td>{{ report.visibility }}</td>
+        <td>{{ report.cloud_cover }}</td>
+        <td>{{ report.pressure }}</td>
+        <td>{{ report.daily_summary }}</td>
+        <td>
+          <a [routerLink]="['/edit', report._id]">Edit</a>
+        </td>
+        <td>
+          <a (click)="confirmDelete(report._id)" class="text-danger">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="pagination-controls">
+    <button (click)="firstPage()" [disabled]="currentPage === 1" class="btn btn-warning">First</button>
+    <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn btn-success">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage >= totalPages" class="btn btn-primary">Next</button>
+    <button (click)="lastPage()" [disabled]="currentPage >= totalPages" class="btn btn-danger">Last</button>
+  </div>
+</div>
